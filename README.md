@@ -55,7 +55,9 @@ Before/after at 6 bits. The two methods use different `shape` values because met
 
 - `jerryzhao.wav` — original
 - `jerryzhao_bitphucker_method1_6bit_shape3.wav` — method 1, shape 3 (harsh)
-- `jerryzhao_bitphucker_method2_6bit_shape8.wav` — method 2, shape 8 (warm, crackly)
+- `jerryzhao_bitphucker_method2_6bit_shape32.wav` — method 2, shape 32 (warm, crackly)
+
+The source has RMS −18 dBFS and almost no samples above 0.7, so method 2 — which only damages loud samples — needs a very steep warp to be clearly audible on it. On louder, more compressed material, lower `shape` values work fine.
 
 ## Parameters
 
