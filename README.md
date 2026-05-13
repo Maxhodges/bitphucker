@@ -50,11 +50,11 @@ warm  = bitphucker(norm, bit_depth=4, shape=3.0, method=2) * peak
 python3 demo.py input.wav --bit-depth 4 --shape 3.0
 ```
 
-Outputs:
+Outputs are written next to the input using this naming pattern:
 
 ```
-input_bitphucker_method1_4bit_shape3.wav
-input_bitphucker_method2_4bit_shape3.wav
+<stem>_bitphucker_method1_<bit>bit_shape<shape>.wav
+<stem>_bitphucker_method2_<bit>bit_shape<shape>.wav
 ```
 
 ## Listen
