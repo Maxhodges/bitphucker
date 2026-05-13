@@ -51,13 +51,11 @@ input_bitphucker_method2_4bit_shape3.wav
 
 ## Listen
 
-Before/after at 6 bits. The two methods use different `shape` values because method 2 is subtle by design — at the same shape it would be inaudible on most material.
+Before/after at 6 bits, shape 8.0. Source is peak-normalized before processing (the source has peak 0.857, so this is a 1.34 dB lift) and output is scaled back to original level for a fair A/B.
 
 - `jerryzhao.wav` — original
-- `jerryzhao_bitphucker_method1_6bit_shape3.wav` — method 1, shape 3 (harsh)
-- `jerryzhao_bitphucker_method2_6bit_shape32.wav` — method 2, shape 32 (warm, crackly)
-
-The source has RMS −18 dBFS and almost no samples above 0.7, so method 2 — which only damages loud samples — needs a very steep warp to be clearly audible on it. On louder, more compressed material, lower `shape` values work fine.
+- `jerryzhao_bitphucker_method1_6bit_shape8_peaknorm.wav` — method 1 (harsh)
+- `jerryzhao_bitphucker_method2_6bit_shape8_peaknorm.wav` — method 2 (warm, crackly)
 
 ## Parameters
 
