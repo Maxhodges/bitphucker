@@ -51,11 +51,11 @@ input_bitphucker_method2_4bit_shape3.wav
 
 ## Listen
 
-Before/after at 6-bit, shape 3.0:
+Before/after at 6 bits. The two methods use different `shape` values because method 2 is subtle by design — at the same shape it would be inaudible on most material.
 
 - `jerryzhao.wav` — original
-- `jerryzhao_bitphucker_method1_6bit_shape3.wav` — method 1 (harsh)
-- `jerryzhao_bitphucker_method2_6bit_shape3.wav` — method 2 (warm, crackly)
+- `jerryzhao_bitphucker_method1_6bit_shape3.wav` — method 1, shape 3 (harsh)
+- `jerryzhao_bitphucker_method2_6bit_shape8.wav` — method 2, shape 8 (warm, crackly)
 
 ## Parameters
 
