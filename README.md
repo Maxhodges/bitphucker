@@ -36,7 +36,9 @@ from bitphucker import bitphucker
 peak = float(np.max(np.abs(audio)))
 norm = audio / peak
 
-harsh = bitphucker(norm, bit_depth=4, shape=3.0, method=1) * peak
+# Method 1 destroys quiet content — leave headroom (8-bit) so the loud body still breathes.
+# Method 2 destroys loud content — crush hard (4-bit) so the coarse plateaus are clearly audible.
+harsh = bitphucker(norm, bit_depth=8, shape=3.0, method=1) * peak
 warm  = bitphucker(norm, bit_depth=4, shape=3.0, method=2) * peak
 ```
 
@@ -65,6 +67,6 @@ The two methods have different characters, so they want different bit-depths to 
 
 ## Parameters
 
-- `bit_depth` — number of bits of quantization. Lower = more obvious effect. `4` is a good starting point; `2` is brutal.
+- `bit_depth` — number of bits of quantization. Lower = more obvious effect. The two methods have different sweet spots: **method 1** sounds best around `6–8` (the loud body has room to breathe while quiet content gates out); **method 2** sounds best around `3–4` (so the coarse loud plateaus are unmistakable). `2` is brutal in either case.
 - `shape` — how aggressively the amplitude axis is warped. `1.0` = uniform (normal bit-crush). `3.0` is a strong, clearly-audible setting. Higher pushes further in whichever direction `method` chose.
 - `method` — `1` (harsh, loud-detail) or `2` (warm, quiet-detail).
