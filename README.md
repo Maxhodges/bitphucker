@@ -57,11 +57,11 @@ input_bitphucker_method2_4bit_shape3.wav
 
 ## Listen
 
-Before/after at 6 bits, shape 8.0:
+The two methods have different characters, so they want different bit-depths to shine:
 
 - `jerryzhao.wav` — original
-- `jerryzhao_bitphucker_method1_6bit_shape8.wav` — method 1 (harsh)
-- `jerryzhao_bitphucker_method2_6bit_shape8.wav` — method 2 (warm, crackly)
+- `jerryzhao_bitphucker_method1_8bit_shape3.wav` — method 1 at 8-bit, shape 3 (gated quiet, clean loud)
+- `jerryzhao_bitphucker_method2_4bit_shape3.wav` — method 2 at 4-bit, shape 3 (warm, crackly loud)
 
 ## Parameters
 
