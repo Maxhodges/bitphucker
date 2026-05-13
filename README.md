@@ -1,5 +1,7 @@
 # bitphucker
 
+*Inspired by [this YouTube short](https://www.youtube.com/shorts/o7PZWB1GgaM).*
+
 A bit-crusher reduces the *number* of amplitude levels — uniform steps across the signal range. **Bitphucker** changes the *distribution* of those levels instead. Same idea (coarse quantization), but the quantization steps aren't evenly spaced.
 
 There are two ways to do it:
