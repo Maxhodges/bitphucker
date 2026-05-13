@@ -49,6 +49,14 @@ input_bitphucker_method1_4bit_shape3.wav
 input_bitphucker_method2_4bit_shape3.wav
 ```
 
+## Listen
+
+Before/after at 6-bit, shape 3.0:
+
+- `jerryzhao.wav` — original
+- `jerryzhao_bitphucker_method1_6bit_shape3.wav` — method 1 (harsh)
+- `jerryzhao_bitphucker_method2_6bit_shape3.wav` — method 2 (warm, crackly)
+
 ## Parameters
 
 - `bit_depth` — number of bits of quantization. Lower = more obvious effect. `4` is a good starting point; `2` is brutal.
