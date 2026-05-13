@@ -27,16 +27,22 @@ pip install numpy
 ## Use the function
 
 ```python
+import numpy as np
 from bitphucker import bitphucker
 
 # audio: numpy array of float samples in [-1, 1]
-harsh = bitphucker(audio, bit_depth=4, shape=3.0, method=1)
-warm  = bitphucker(audio, bit_depth=4, shape=3.0, method=2)
+# Peak-normalize first — bitphucker quantizes against a fixed [-1, 1] grid,
+# so its character (especially method 2) depends on the signal hitting the rails.
+peak = float(np.max(np.abs(audio)))
+norm = audio / peak
+
+harsh = bitphucker(norm, bit_depth=4, shape=3.0, method=1) * peak
+warm  = bitphucker(norm, bit_depth=4, shape=3.0, method=2) * peak
 ```
 
 ## Run the demo
 
-`demo.py` reads a 16-bit PCM WAV (mono or stereo) and writes a method-1 and method-2 render next to it.
+`demo.py` reads a 16-bit PCM WAV (mono or stereo), peak-normalizes it, runs both methods, and writes the renders back at the original level next to the input.
 
 ```
 python3 demo.py input.wav --bit-depth 4 --shape 3.0
@@ -51,11 +57,11 @@ input_bitphucker_method2_4bit_shape3.wav
 
 ## Listen
 
-Before/after at 6 bits, shape 8.0. Source is peak-normalized before processing (the source has peak 0.857, so this is a 1.34 dB lift) and output is scaled back to original level for a fair A/B.
+Before/after at 6 bits, shape 8.0:
 
 - `jerryzhao.wav` — original
-- `jerryzhao_bitphucker_method1_6bit_shape8_peaknorm.wav` — method 1 (harsh)
-- `jerryzhao_bitphucker_method2_6bit_shape8_peaknorm.wav` — method 2 (warm, crackly)
+- `jerryzhao_bitphucker_method1_6bit_shape8.wav` — method 1 (harsh)
+- `jerryzhao_bitphucker_method2_6bit_shape8.wav` — method 2 (warm, crackly)
 
 ## Parameters
 

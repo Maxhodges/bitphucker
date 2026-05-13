@@ -53,8 +53,15 @@ def main():
     audio, sr, channels = read_wav_float(in_path)
     stem = in_path.with_suffix("").name
 
+    # bitphucker quantizes against a fixed [-1, 1] grid, so its character
+    # depends on how much of the signal sits near the rails. Peak-normalize
+    # so the algorithm sees the whole dynamic range, then scale the output
+    # back to source level for a fair A/B against the input.
+    peak = float(np.max(np.abs(audio)))
+    norm = audio / peak if peak > 0 else audio
+
     for method in (1, 2):
-        out = bitphucker(audio, bit_depth=args.bit_depth, shape=args.shape, method=method)
+        out = bitphucker(norm, bit_depth=args.bit_depth, shape=args.shape, method=method) * peak
         out_path = in_path.with_name(
             f"{stem}_bitphucker_method{method}_{args.bit_depth}bit_shape{args.shape:g}.wav"
         )

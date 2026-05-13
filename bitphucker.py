@@ -16,6 +16,11 @@ def bitphucker(audio, bit_depth=4, shape=3.0, method=1):
         Quiet parts keep detail, loud parts smash to coarse steps. Warm, crackly.
 
     shape=1.0 reduces to an ordinary bit-crush.
+
+    Note: the quantization grid is fixed against [-1, 1]. Method 2 only
+    damages samples near the rails, so on quiet sources it's barely
+    audible. Peak-normalize the input first (and scale the output back if
+    you want to preserve level) — that's what `demo.py` does.
     """
     levels = 2 ** (bit_depth - 1)
     sign = np.sign(audio)
